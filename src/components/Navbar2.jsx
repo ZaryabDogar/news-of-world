@@ -13,7 +13,7 @@ export default function Navbar() {
     <nav className="border-b-gray-800 border dark:bg-gray-900 fixed z-10 w-full top-0 shadow-lg bg-white">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to={'/'} className="flex items-center">
-          <img src="/logo.png" className="h-8 mr-3" alt="Flowbite Logo" />
+          <img src="logo.png" className="h-8 mr-3" alt="Flowbite Logo" />
           <span className="self-center sm:text-lg text-sm font-semibold whitespace-nowrap dark:text-white tracking-widest">
             NewsOfWorld
           </span>
