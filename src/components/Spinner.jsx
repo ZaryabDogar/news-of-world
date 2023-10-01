@@ -1,5 +1,5 @@
 import React from 'react'
-import gif from ".gif.gif"
+import gif from "./gif.gif"
 export default function Spinner() {
   return (
     <div className='w-full flex justify-center mt-20'>
