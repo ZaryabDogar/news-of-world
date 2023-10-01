@@ -1,4 +1,4 @@
-import React from 'react'
+
 import News from "./components/News.jsx"
 import News2 from "./components/News2.jsx"
 import { BrowserRouter,Route ,Routes } from "react-router-dom"
@@ -6,7 +6,7 @@ export default function App() {
 
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/news-of-world">
  
 
  <Routes>
