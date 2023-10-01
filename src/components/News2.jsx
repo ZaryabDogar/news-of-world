@@ -21,7 +21,7 @@ export default function News2(props) {
     const newscomponent= async ()=>{
       setload(true)
       
-      let url=`https://newsapi.org/v2/everything?q=${props.q}&from=${datey}&language=en&pageSize=20&page=${num}&apiKey=${key}`
+      let url=`http://newsapi.org/v2/everything?q=${props.q}&from=${datey}&language=en&pageSize=20&page=${num}&apiKey=${key}`
       console.log("clicked")
       document.title=`News-Of-World-${capitlizeText(props.q)}`
       setProgress(20)

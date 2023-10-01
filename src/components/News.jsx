@@ -18,7 +18,7 @@ function capitlizeText(word)
 }
     const newscomponent= async ()=>{
       setload(true)
-        let url=`https://gnews.io/api/v4/top-headlines?category=${props.catagory}&lang=en&country=pk&max=20&apikey=${key}`
+        let url=`http://gnews.io/api/v4/top-headlines?category=${props.catagory}&lang=en&country=pk&max=20&apikey=${key}`
         console.log("clicked")
         document.title=`News-Of-World-${capitlizeText(props.catagory)}`
         setProgress(20)
