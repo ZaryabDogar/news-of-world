@@ -8,20 +8,20 @@ export default function News2(props) {
     const [load, setload] = useState(false)
     const [progress, setProgress] = useState(0)
   
-  var yesterday = new Date(Date.now() - 86400000);
-    // let key=`fc2eba4aeaf7409aa373335febff8f80`
-    let key=`a35809aab2d54baa9ce84a77b143262d`
+
+    // let key=`a35809aab2d54baa9ce84a77b143262d`
     function capitlizeText(word) 
 {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-    let datey=yesterday.toISOString().slice(0,10)
+   
     const [news, setnews] = useState([])
     const newscomponent= async ()=>{
       setload(true)
       
-      let url=`https://newsapi.org/v2/everything?q=${props.q}&from=${datey}&language=en&pageSize=20&page=${num}&apiKey=${key}`
+      // let url=`https://newsapi.org/v2/everything?q=${props.q}&from=${datey}&language=en&pageSize=20&page=${num}&apiKey=${key}`
+      let url=`https://newsdata.io/api/1/news?apikey=pub_30377c5284e3b0d42cd2faff4d40ef453dbc4&q=${props.q}&language=en`
       console.log("clicked")
       document.title=`News-Of-World-${capitlizeText(props.q)}`
       setProgress(20)
@@ -31,11 +31,11 @@ setProgress(50)
           setProgress(70)
           let data =await response.json()
           setload(false)
-          if (data.status==="ok") {
+          if (data.status==="success") {
             
           
           console.log(data)
-          setnews(data.articles)
+          setnews(data.results)
             setarticle(data.totalResults)
             setProgress(100)
           }else{
@@ -100,7 +100,7 @@ const next=()=>{
        {!load &&news.map((elem,i)=>{
           return  <div key={i} className="max-w-[15rem] md:max-w-[25rem] bg-white border m-5 border-gray-200 rounded-lg  dark:bg-gray-800 dark:border-gray-700 shadow-md hover:shadow-2xl hover:scale-y-110 ">
     <a href="#">
-        <img className="rounded-lg ease-in-out md:h-[15rem] h-[10rem] w-full hover:scale-x-110  hover:ease-in-out" src={elem.urlToImage?elem.urlToImage:`https://placehold.co/600x400`
+        <img className="rounded-lg ease-in-out md:h-[15rem] h-[10rem] w-full hover:scale-x-110  hover:ease-in-out" src={elem.image_url?elem.image_url:`https://placehold.co/600x400`
 } alt="" />
     </a>
     <div className="p-5">
@@ -109,20 +109,19 @@ const next=()=>{
         
         <p className="mb-2 font-normal text-lg text-gray-700 dark:text-gray-400">{elem.description?elem.description.slice(0,300):""}...</p>
         <div className='flex justify-between w-full'>
-        <a href={elem.url}  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none  dark:bg-blue-600 dark:hover:bg-blue-700 hover:shadow-xl" target='_blank' rel="noreferrer" >
+        <a href={elem.link}  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none  dark:bg-blue-600 dark:hover:bg-blue-700 hover:shadow-xl" target='_blank' rel="noreferrer" >
             Read more
              <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>
         </a>
        </div> 
-       <span className='text-sm font-bold my-5 flex '> Author:<span className="bg-red-600 text-white text-xs font-medium ml-2 px-2.5 py-0.5 rounded dark:bg-white dark:text-blue-300">{elem.author?elem.author:"Unknown"}</span>
+       <span className='text-sm font-bold my-5 flex '> Author:<span className="bg-red-600 text-white text-xs font-medium ml-2 px-2.5 py-0.5 rounded dark:bg-white dark:text-blue-300">{elem.creator?elem.creator:"Unknown"}</span>
 </span>
-       <span className='text-sm font-bold my-5 flex '> Source:<span className="bg-red-600 text-white text-xs font-medium ml-2 px-2.5 py-0.5 rounded dark:bg-white dark:text-blue-300">{elem.source
-.name}</span>
+       <span className='text-sm font-bold my-5 flex '> Source:<span className="bg-red-600 text-white text-xs font-medium ml-2 px-2.5 py-0.5 rounded dark:bg-white dark:text-blue-300">{elem.source_id}</span>
 </span>
-<div className='flex justify-between'> <span className='font-semibold'>{new Date(elem.publishedAt).toDateString()}</span>
-<p className='font-semibold'>{new Date(elem.publishedAt).toLocaleTimeString()}</p></div>
+<div className='flex justify-between'> <span className='font-semibold'>{new Date(elem.pubDate).toDateString()}</span>
+<p className='font-semibold'>{new Date(elem.pubDate).toLocaleTimeString()}</p></div>
     </div>
 </div>
       })}
