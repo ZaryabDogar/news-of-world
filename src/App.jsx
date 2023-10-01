@@ -1,12 +1,12 @@
 
 import News from "./components/News.jsx"
 import News2 from "./components/News2.jsx"
-import { BrowserRouter,Route ,Routes } from "react-router-dom"
+import { Route ,Routes } from "react-router-dom"
 export default function App() {
 
 
   return (
-    <BrowserRouter basename="/news-of-world">
+    // <BrowserRouter basename="/news-of-world">
  
 
  <Routes>
@@ -32,6 +32,6 @@ export default function App() {
  <Route exact path="/weaponst" element={ <News2 key="weaponst" q={"weapons"}/>}/>
 </Routes>
 
-  </BrowserRouter>
+  // </BrowserRouter>
   )
 }
