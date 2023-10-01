@@ -21,7 +21,7 @@ export default function News2(props) {
       setload(true)
       
       // let url=`https://newsapi.org/v2/everything?q=${props.q}&from=${datey}&language=en&pageSize=20&page=${num}&apiKey=${key}`
-      let url=`https://newsdata.io/api/1/news?apikey=pub_30377c5284e3b0d42cd2faff4d40ef453dbc4&q=${props.q}&language=en`
+      let url=`https://newsdata.io/api/${num}/news?apikey=pub_30377c5284e3b0d42cd2faff4d40ef453dbc4&q=${props.q}&language=en`
       console.log("clicked")
       document.title=`News-Of-World-${capitlizeText(props.q)}`
       setProgress(20)
